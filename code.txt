@@ -1,0 +1,56 @@
+programa { //VNW_BankV3 
+  inclua biblioteca Matematica --> m
+  inclua biblioteca Util --> u
+
+  cadeia usuario = "pepe"
+  cadeia senha = "vnw123"
+  inteiro tentativas = 0
+  logico fim = falso
+
+  funcao inicio() { 
+    escreva("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n")
+    escreva(" Olá! \n")
+    escreva("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n")
+    u.aguarde(800)
+    
+    enquanto(tentativas < 3 e fim == falso) {
+      cadeia usuario_i
+      cadeia senha_i
+
+      escreva("\n Nome de usuário: ")
+      leia(usuario_i)
+      u.aguarde(1000)
+
+      escreva(" Senha: ")
+      leia(senha_i)
+      u.aguarde(1000)
+      limpa()
+
+      Verificar(usuario_i, senha_i)
+    }
+  }
+
+  funcao Verificar(cadeia user, cadeia pass) {
+    se(user == usuario e pass == senha) {
+      escreva("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n")
+      escreva(" Seja bem vindo \n")
+      escreva("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n")
+      fim = verdadeiro      
+    }
+    senao {
+      tentativas++
+      se(tentativas < 3) {
+        u.aguarde(800)
+        escreva("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n")
+        escreva(" ACESSO NEGADO  \n")
+        escreva("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n")
+        escreva("Tentativas restantes: ", 3 - tentativas)
+      } senao {
+        u.aguarde(800)
+        escreva("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n")
+        escreva(" USUÁRIO BLOQUEADO \n")
+        escreva("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n")
+      }
+    }
+  }
+}
